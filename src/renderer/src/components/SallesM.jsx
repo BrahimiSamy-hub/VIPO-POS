@@ -1,0 +1,53 @@
+import Categories from './Categories'
+import add from '../assets/add.svg'
+function SallesM() {
+  return (
+    <div className="">
+      <h1>Salles Management</h1>
+      {/* <Categories /> */}
+      <hr />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridGap: '10px'
+        }}
+      >
+        <button type="button" className="add-button">
+          <section className="card">
+            <div className="card-content">
+              <div className="image-container">
+                <img
+                  loading="lazy"
+                  src={add}
+                  alt="Add new dish"
+                  className="icon"
+                  draggable="false"
+                />
+              </div>
+              Add new Salles
+            </div>
+          </section>
+        </button>
+        <button type="button" className="add-button">
+          <section className="card">
+            <div className="card-content">
+              <div className="image-container">
+                <img
+                  loading="lazy"
+                  src={add}
+                  alt="Add new dish"
+                  className="icon"
+                  draggable="false"
+                />
+              </div>
+              Add new Salles
+            </div>
+          </section>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default SallesM
