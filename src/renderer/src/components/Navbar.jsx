@@ -11,7 +11,7 @@ function Navbar() {
       <img draggable="false" alt="Logo" className="logo" src={logo} />
       <ul>
         <li>
-          <Link to="/">
+          <Link to="/tables">
             <img draggable="false" alt="Home icon" src={Home} />
           </Link>
         </li>

@@ -1,9 +1,9 @@
 import Categories from './Categories'
 import add from '../assets/add.svg'
-function SallesM() {
+function CaisseM() {
   return (
     <div className="">
-      <h1>Salles Management</h1>
+      <h1>Caisse Management</h1>
       <hr style={{ margin: '20px 0px' }} />
       <div
         style={{
@@ -24,7 +24,7 @@ function SallesM() {
                   draggable="false"
                 />
               </div>
-              Add new Salles
+              Add new Caise
             </div>
           </section>
         </button>
@@ -33,4 +33,4 @@ function SallesM() {
   )
 }
 
-export default SallesM
+export default CaisseM

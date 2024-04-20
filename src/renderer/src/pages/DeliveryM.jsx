@@ -1,10 +1,11 @@
 import Categories from './Categories'
 import add from '../assets/add.svg'
-function SallesM() {
+function DeliveyM() {
   return (
     <div className="">
-      <h1>Salles Management</h1>
-      <hr style={{ margin: '20px 0px' }} />
+      <h1>Delivey Management</h1>
+      {/* <Categories /> */}
+      <hr />
       <div
         style={{
           display: 'grid',
@@ -24,7 +25,23 @@ function SallesM() {
                   draggable="false"
                 />
               </div>
-              Add new Salles
+              Add new Delivey
+            </div>
+          </section>
+        </button>
+        <button type="button" className="add-button">
+          <section className="card">
+            <div className="card-content">
+              <div className="image-container">
+                <img
+                  loading="lazy"
+                  src={add}
+                  alt="Add new dish"
+                  className="icon"
+                  draggable="false"
+                />
+              </div>
+              Add new Delivey
             </div>
           </section>
         </button>
@@ -33,4 +50,4 @@ function SallesM() {
   )
 }
 
-export default SallesM
+export default DeliveyM

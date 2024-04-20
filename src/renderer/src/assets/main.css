@@ -54,6 +54,7 @@ hr {
 .order-content {
   padding: 24px;
 }
+
 .dashboard-container {
   display: flex;
   width: 100%;
@@ -122,7 +123,9 @@ hr {
 .plat-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
+  /* grid-gap: 10px; */
+  grid-column-gap: 10px;
+  grid-row-gap: 50px;
   margin-top: 40px;
 }
 
@@ -154,9 +157,16 @@ hr {
   background-color: rgba(31, 29, 43, 1);
   padding: 24px;
 }
+
+.stat-container {
+  border-radius: 8px;
+  background-color: rgba(31, 29, 43, 1);
+  padding: 16px;
+}
 .item-image {
-  aspect-ratio: 1.09;
+  aspect-ratio: 1;
   z-index: 10;
+  padding-left: 3px;
   margin-top: -60px;
 }
 .item-details {
@@ -189,13 +199,6 @@ hr {
   padding: 24px;
   gap: 8px;
   cursor: pointer;
-}
-
-.feature-icon {
-  width: 16px;
-  aspect-ratio: 1;
-  object-fit: cover;
-  align-self: start;
 }
 
 .feature-title {
@@ -320,9 +323,12 @@ hr {
   background-color: rgba(234, 124, 105, 0.26);
 }
 
+.divider {
+  margin: 20px 0;
+}
+
 .div {
   display: flex;
-
   margin-top: 8px;
   flex-direction: column;
   font-size: 14px;
@@ -364,4 +370,84 @@ hr {
   color: #ea7c69;
   line-height: 140%;
   padding: 18px 75px;
+}
+.stat-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.stat {
+  border-radius: 8px;
+  width: 300px;
+  align-items: start;
+  background-color: #1f1d2b;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+.stat-card {
+  justify-content: center;
+  display: flex;
+  gap: 12px;
+}
+.icon-container {
+  border-radius: 8px;
+  background-color: #252836;
+  height: 54px;
+  width: 54px;
+  padding: 7px;
+}
+.img-stat {
+  aspect-ratio: 1;
+  width: 40px;
+}
+.pourcentage {
+  display: flex;
+  gap: 6px;
+  margin: auto 0;
+}
+.up {
+  color: var(--Accents-Green, #50d1aa);
+  font:
+    500 16px/140% Barlow,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+.down {
+  color: var(--Accents-Green, red);
+  font:
+    500 16px/140% Barlow,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+.pourcentage-icon {
+  border-radius: 20px;
+  background-color: rgba(136, 224, 145, 0.24);
+  padding: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.text-stat {
+  color: var(--White, #fff);
+  margin-top: 8px;
+  font:
+    600 28px/140% Barlow,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+.small-text {
+  color: var(--Text-Light, #abbbc2);
+  margin-top: 8px;
+  font:
+    500 14px/130% Barlow,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }

@@ -1,9 +1,9 @@
 import Categories from './Categories'
 import add from '../assets/add.svg'
-function SallesM() {
+function StockM() {
   return (
     <div className="">
-      <h1>Salles Management</h1>
+      <h1>Stock Management</h1>
       <hr style={{ margin: '20px 0px' }} />
       <div
         style={{
@@ -33,4 +33,4 @@ function SallesM() {
   )
 }
 
-export default SallesM
+export default StockM

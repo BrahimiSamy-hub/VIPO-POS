@@ -4,12 +4,20 @@ import Product from '../components/ProductM'
 import Categories from '../components/CategoriesM'
 import Tables from '../components/TablesM'
 import Salles from '../components/SallesM'
-import Table from '../assets/table10.svg'
-import Food from '../assets/fastfood.svg'
-import Category from '../assets/category.svg'
-import Delivery from '../assets/delivery.svg'
-import Person from '../assets/person.svg'
-
+import Users from '../components/UsersM'
+import Delivery from '../components/DeliveryM'
+import Caisse from '../components/CaisseM'
+import Stock from '../components/StockM'
+import { FaCashRegister } from 'react-icons/fa'
+import {
+  MdTableRestaurant,
+  MdMeetingRoom,
+  MdDeliveryDining,
+  MdOutlineInventory,
+  MdFastfood,
+  MdCategory
+} from 'react-icons/md'
+import { GoPersonFill } from 'react-icons/go'
 const Setting = () => {
   const [activeComponent, setActiveComponent] = useState('salles')
   const handleNavClick = (componentName) => {
@@ -25,7 +33,7 @@ const Setting = () => {
           <ul className="feature-list">
             <a onClick={() => handleNavClick('salles')}>
               <li className={`feature-item ${activeComponent === 'salles' ? 'special' : ''}`}>
-                <img draggable="false" src={Table} alt="Salles Icon" className="feature-icon" />
+                <MdMeetingRoom size={25} />
                 <div className="feature-content">
                   <h3 className={`feature-title ${activeComponent === 'salles' ? 'active' : ''}`}>
                     Salles Management
@@ -36,12 +44,7 @@ const Setting = () => {
             </a>
             <a onClick={() => handleNavClick('tables')}>
               <li className={`feature-item ${activeComponent === 'tables' ? 'special' : ''}`}>
-                <img
-                  draggable="false"
-                  src={Table}
-                  alt="Tables Management Icon"
-                  className="feature-icon"
-                />
+                <MdTableRestaurant size={25} />
                 <div className="feature-content">
                   <h3 className={`feature-title ${activeComponent === 'tables' ? 'active' : ''}`}>
                     Tables Management
@@ -52,12 +55,7 @@ const Setting = () => {
             </a>
             <a onClick={() => handleNavClick('categories')}>
               <li className={`feature-item ${activeComponent === 'categories' ? 'special' : ''}`}>
-                <img
-                  draggable="false"
-                  src={Category}
-                  alt="Categories Management Icon"
-                  className="feature-icon"
-                />
+                <MdCategory size={25} />
                 <div className="feature-content">
                   <h3
                     className={`feature-title ${activeComponent === 'categories' ? 'active' : ''}`}
@@ -70,12 +68,7 @@ const Setting = () => {
             </a>
             <a onClick={() => handleNavClick('products')}>
               <li className={`feature-item ${activeComponent === 'products' ? 'special' : ''}`}>
-                <img
-                  draggable="false"
-                  src={Food}
-                  alt="Product Management Icon"
-                  className="feature-icon"
-                />
+                <MdFastfood size={25} />
                 <div className="feature-content">
                   <h3 className={`feature-title ${activeComponent === 'products' ? 'active' : ''}`}>
                     Product Management
@@ -84,33 +77,45 @@ const Setting = () => {
                 </div>
               </li>
             </a>
-            <a onClick={() => handleNavClick('products')}>
-              <li className={`feature-item ${activeComponent === 'products' ? 'special' : ''}`}>
-                <img
-                  draggable="false"
-                  src={Person}
-                  alt="Product Management Icon"
-                  className="feature-icon"
-                />
+            <a onClick={() => handleNavClick('users')}>
+              <li className={`feature-item ${activeComponent === 'users' ? 'special' : ''}`}>
+                <GoPersonFill size={25} />
                 <div className="feature-content">
-                  <h3 className={`feature-title ${activeComponent === 'products' ? 'active' : ''}`}>
+                  <h3 className={`feature-title ${activeComponent === 'users' ? 'active' : ''}`}>
                     Personal Management
                   </h3>
                   <p className="feature-paragraphe">Manage your product, pricing, etc</p>
                 </div>
               </li>
             </a>
-            <a onClick={() => handleNavClick('products')}>
-              <li className={`feature-item ${activeComponent === 'products' ? 'special' : ''}`}>
-                <img
-                  draggable="false"
-                  src={Delivery}
-                  alt="Product Management Icon"
-                  className="feature-icon"
-                />
+            <a onClick={() => handleNavClick('delivery')}>
+              <li className={`feature-item ${activeComponent === 'delivery' ? 'special' : ''}`}>
+                <MdDeliveryDining size={25} />
                 <div className="feature-content">
-                  <h3 className={`feature-title ${activeComponent === 'products' ? 'active' : ''}`}>
+                  <h3 className={`feature-title ${activeComponent === 'delivery' ? 'active' : ''}`}>
                     Livreur Management
+                  </h3>
+                  <p className="feature-paragraphe">Manage your product, pricing, etc</p>
+                </div>
+              </li>
+            </a>
+            <a onClick={() => handleNavClick('stock')}>
+              <li className={`feature-item ${activeComponent === 'stock' ? 'special' : ''}`}>
+                <MdOutlineInventory size={25} />
+                <div className="feature-content">
+                  <h3 className={`feature-title ${activeComponent === 'stock' ? 'active' : ''}`}>
+                    Stock Management
+                  </h3>
+                  <p className="feature-paragraphe">Manage your product, pricing, etc</p>
+                </div>
+              </li>
+            </a>
+            <a onClick={() => handleNavClick('caisse')}>
+              <li className={`feature-item ${activeComponent === 'caisse' ? 'special' : ''}`}>
+                <FaCashRegister size={25} />
+                <div className="feature-content">
+                  <h3 className={`feature-title ${activeComponent === 'caisse' ? 'active' : ''}`}>
+                    Caisse Management
                   </h3>
                   <p className="feature-paragraphe">Manage your product, pricing, etc</p>
                 </div>
@@ -123,6 +128,10 @@ const Setting = () => {
           {activeComponent === 'categories' && <Categories />}
           {activeComponent === 'salles' && <Salles />}
           {activeComponent === 'tables' && <Tables />}
+          {activeComponent === 'users' && <Users />}
+          {activeComponent === 'delivery' && <Delivery />}
+          {activeComponent === 'stock' && <Stock />}
+          {activeComponent === 'caisse' && <Caisse />}
         </aside>
       </div>
     </>

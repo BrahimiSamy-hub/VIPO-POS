@@ -7,7 +7,7 @@ function ProdudctM() {
     <div className="">
       <h1>Products Management</h1>
       <Categories />
-      <hr />
+      <hr style={{ marginBottom: '20px' }} />
       <div
         style={{
           display: 'grid',

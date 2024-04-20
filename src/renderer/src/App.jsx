@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 
+import Login from './pages/Login'
 import Tables from './pages/Tables'
 import Stat from './pages/Stat'
 import Setting from './pages/Settings'
@@ -11,7 +12,8 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Tables />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/tables" element={<Tables />} />
           <Route path="/Menu" element={<Menu />} />
           <Route path="/stat" element={<Stat />} />
           <Route path="/setting" element={<Setting />} />

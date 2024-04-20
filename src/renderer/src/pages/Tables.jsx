@@ -16,7 +16,7 @@ const Tables = () => {
           <Name></Name>
           <Salles setSelectedSale={setSelectedSale} /> {/* Pass handler to Salles */}
           <hr />
-          <Table selectedSale={selectedSale} /> {/* Pass selectedSale to Table */}
+          <Table selectedSale={selectedSale} />
         </div>
         {/* <div className="orders-container">
           <Orders />

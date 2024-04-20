@@ -1,43 +1,67 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Taco from '../assets/taco.svg'
 import Soda from '../assets/soda.svg'
 import Popcorn from '../assets/popcorn.svg'
 import Hotdog from '../assets/hotdog.svg'
+import CircularProgress from '@mui/material/CircularProgress'
 
 function Categories() {
-  const categories = [
-    { id: 1, name: 'Hot Dishes', icon: Hotdog },
-    { id: 2, name: 'Cold Dishes', icon: Popcorn },
-    { id: 3, name: 'Soup', icon: Soda },
-    { id: 4, name: 'Grill', icon: Soda },
-    { id: 5, name: 'Appetizer', icon: Taco }
-    // { id: 6, name: 'Dessert', icon: Popcorn }
-    // { id: 7, name: 'Dessert', icon: Popcorn },
-    // { id: 8, name: 'Dessert', icon: Popcorn },
-    // { id: 9, name: 'Dessert', icon: Popcorn }
-  ]
+  const [categories, setCategories] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [selectedCategory, setSelectedCategoryInternal] = useState('Burger')
 
-  const [selectedSale, setSelectedSaleInternal] = useState('Hot Dishes')
-  const handleSaleClick = (salle) => {
-    setSelectedSaleInternal(salle)
+  const fetchData = async () => {
+    try {
+      setIsLoading(true)
+      const response = await axios.get('http://localhost:3000/categories')
+      setCategories(response.data)
+      setIsLoading(false)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+      setIsLoading(true)
+    }
   }
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategoryInternal(category)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const skeletonItems = [1, 2, 3, 4, 5].map((id) => ({
+    id
+  }))
+
   return (
     <ul style={{ display: 'flex', gap: '20px', marginTop: '24px' }}>
-      {categories.map((category) => (
+      {(isLoading ? skeletonItems : categories).map((category) => (
         <li
           key={category.id}
           style={{ cursor: 'pointer' }}
-          onClick={() => handleSaleClick(category.name)}
+          onClick={() => handleCategoryClick(category.name)}
         >
           <div
-            className={`chip icon-category ${selectedSale === category.name ? 'chip-selected' : ''}`}
+            className={`chip icon-category ${selectedCategory === category.name && !isLoading ? 'chip-selected' : ''}`}
           >
-            <img
+            {/* <img
               src={category.icon}
-              alt={category.name}
-              style={{ width: '35px', paddingRight: '10px' }}
-            />
-            <h4>{category.name}</h4>
+              alt={category.name || 'Loading...'}
+              style={{ width: '35px', paddingRight: '10px', opacity: isLoading ? 0.5 : 1 }}
+            /> */}
+            {isLoading ? (
+              <h4>
+                <CircularProgress
+                  sx={{
+                    color: '#ea7c69'
+                  }}
+                />
+              </h4>
+            ) : (
+              <h4 style={{ textTransform: 'capitalize' }}>{category.name}</h4>
+            )}
           </div>
         </li>
       ))}

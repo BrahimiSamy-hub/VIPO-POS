@@ -5,7 +5,7 @@ function TablesM() {
     <div className="">
       <h1>Tables Management</h1>
       <Salles />
-      <hr />
+      <hr style={{ marginBottom: '20px' }} />
       <div
         style={{
           display: 'grid',
