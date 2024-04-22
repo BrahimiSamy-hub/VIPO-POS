@@ -38,12 +38,9 @@ function ProdudctM() {
               <h4 className="">Spicy seasoned seafood noodles</h4>
               <div className="">700 DA</div>
             </div>
-            <but className="div-8">
+            <div className="div-8">
               <img loading="lazy" src={edit} className="" />
-              <span className="" style={{ minWidth: '100%' }}>
-                Edit dish
-              </span>
-            </but>
+            </div>
           </div>
         </div>
       </div>

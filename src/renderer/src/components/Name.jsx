@@ -36,7 +36,7 @@ function Name() {
 
   return (
     <div>
-      <h1>VIPO CHICKEN FRIES</h1>
+      <h1>VIPO CHICKEN&FRIES</h1>
       <small>{dateString}</small>
     </div>
   )

@@ -8,13 +8,17 @@ import CircularProgress from '@mui/material/CircularProgress'
 
 function Categories() {
   const [categories, setCategories] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
   const [selectedCategory, setSelectedCategoryInternal] = useState('Burger')
+  const [isLoading, setIsLoading] = useState(true)
 
   const fetchData = async () => {
+    const token = localStorage.getItem('jwt')
+    const headers = {
+      Authorization: `Bearer ${token}`
+    }
     try {
       setIsLoading(true)
-      const response = await axios.get('http://localhost:3000/categories')
+      const response = await axios.get('http://localhost:3000/categories', { headers })
       setCategories(response.data)
       setIsLoading(false)
     } catch (error) {
@@ -36,10 +40,17 @@ function Categories() {
   }))
 
   return (
-    <ul style={{ display: 'flex', gap: '20px', marginTop: '24px' }}>
+    <ul
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(8,1fr)',
+        columnGap: '10px',
+        marginTop: '24px'
+      }}
+    >
       {(isLoading ? skeletonItems : categories).map((category) => (
         <li
-          key={category.id}
+          key={category._id}
           style={{ cursor: 'pointer' }}
           onClick={() => handleCategoryClick(category.name)}
         >

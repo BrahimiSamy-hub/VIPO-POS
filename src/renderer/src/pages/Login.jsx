@@ -1,14 +1,26 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import Alert from '@mui/material/Alert'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
+    if (!username || !password) {
+      setError('Username and password are required.')
+      return
+    }
     try {
       const response = await axios.post('http://localhost:3000/users/login', {
         username,
@@ -19,37 +31,124 @@ const Login = () => {
         localStorage.setItem('jwt', response.data.token)
         navigate('/tables')
       } else {
-        alert('Access Denied: You are not authorized as cashier.')
+        setError('Access Denied: You are not authorized.')
       }
     } catch (error) {
-      console.error('Login failed', error.response || error)
+      setError(
+        error.response ? error.response.data.message : 'Login failed: Please check your credentials'
+      )
     }
   }
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+    <div style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            backgroundColor: '#1f1d2b',
+            padding: '24px',
+            borderRadius: '50px',
+            width: '700px'
+          }}
+        >
+          <Typography component="h1" variant="h3" sx={{ color: '#ea7c69' }}>
+            <h1>VIPO CHICKEN&FRIES</h1>
+          </Typography>
+
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Nom d'utilisateur"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#ea7c69',
+                  '& fieldset': {
+                    borderColor: '#393c49'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#ea7c69'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#ea7c69'
+                  }
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#ea7c69',
+                  '&.Mui-focused': {
+                    color: '#ea7c69'
+                  }
+                }
+              }}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Mot de passe"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  color: '#ea7c69',
+                  '& fieldset': {
+                    borderColor: '#393c49'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#ea7c69'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#ea7c69'
+                  }
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#ea7c69',
+                  '&.Mui-focused': {
+                    color: '#ea7c69'
+                  }
+                }
+              }}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, color: 'white', backgroundColor: '#ea7c69' }}
+            >
+              Sign In
+            </Button>
+            {error && (
+              <Alert severity="error" variant="filled" sx={{ width: '100%', mt: 2 }}>
+                {error}
+              </Alert>
+            )}
+            {!error && <div style={{ height: '64px' }}></div>}
+          </Box>
+        </Box>
+      </Container>
     </div>
   )
 }
